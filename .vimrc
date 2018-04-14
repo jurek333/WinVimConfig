@@ -18,33 +18,40 @@ call vundle#end()
 filetype plugin indent on
 
 set encoding=utf-8
-if has("multi_byte")
-	if &termencoding == ""
-		let &termencoding = &encoding
-	endif
-	setglobal fileencoding=utf-8 bomb
-	set fileencodings=ucs-bom,utf-8
-endif  
+"if has("multi_byte")
+"   if &termencoding == ""
+"		let &termencoding = &encoding
+"	endif
+"	setglobal fileencoding=utf-8 bomb
+"	set fileencodings=ucs-bom,utf-8
+"endif  
 
 set exrc 
 set secure 
 set tabstop=4 
 set softtabstop=4
 set shiftwidth=4 
-set noexpandtab 
+set expandtab 
+set smarttab
 set autoindent
-set cindent
-inoremap { {<CR>}<up><end><CR>
+set si "smart indent
+set nowrap
+"set cindent
+inoremap { {}<left><end><CR>
+vnoremap // y/<C-R>"<CR>
+set hlsearch "highlight search results
+set ruler
 set colorcolumn=110 
 highlight ColorColumn ctermbg=blue  
-augroup project 
-    autocmd!
-    autocmd BufRead,BufNewFile *.h,*.c,*.cc,*.cpp set filetype=c.doxygen 
-augroup END  
+"augroup project 
+"    autocmd!
+"    autocmd BufRead,BufNewFile *.h,*.c,*.cc,*.cpp set filetype=c.doxygen 
+"augroup END  
 
 set t_Co=256
 syntax on
 set number
+"set relativenumber
 set showmatch
 set comments=s1:/*,mb:\ *,elx:\ */
 
@@ -59,3 +66,9 @@ let g:ycm_enable_diagnostic_highlighting = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_server_python_interpreter = 'D:/Python27/python.exe'
+
+" NERDTree
+map <C-n> :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
+let g:nerdtree_tabs_open_on_console_startup=1
+map <Leader>n <plug>NERDTreeTabsToggle<CR>
