@@ -24,6 +24,8 @@ Plugin 'LucHermitte/mu-template'
 Plugin 'tomtom/stakeholders_vim' 
 Plugin 'LucHermitte/alternate-lite' 
 Plugin 'LucHermitte/lh-cpp'
+Plugin 'OmniSharp/omnisharp-vim'
+Plugin 'vim-syntastic/syntastic'
 call vundle#end()
 filetype plugin indent on
 
@@ -64,6 +66,8 @@ let &path.="C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Too
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+let g:airline_solarized_bg='dark'
+let g:airline_theme='solarized'
 
 
 let g:ycm_global_ycm_extra_conf = 'C:/Users/Maciej/vimfiles/globals/.ycm_extra_conf.py'
@@ -72,6 +76,7 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_server_python_interpreter = 'D:/Python27/python.exe'
 nnoremap <Leader>d :YcmCompleter GoToDefinition<CR>
+nnoremap <Leader>D :YcmCompleter GoToDeclaration<CR>
 nnoremap <C-.> :YcmCompleter FixIt<CR>
 
 " lh-bracket config
@@ -92,3 +97,11 @@ let NERDTreeShowHidden=1
 let g:nerdtree_tabs_open_on_console_startup=1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 map <Leader>n <plug>NERDTreeTabsToggle<CR>
+
+" omnisharp-vim
+let g:OmniSharp_server_path = 'C:\Program Files\OmniSharp.Http.Driver\win7-x64\OmniSharp.exe'
+let g:Omnisharp_stop_server = 2
+let g:OmniSharp_selector_ui = 'ctrlp'
+
+" syntastic
+let g:syntastic_cs_checkers = ['code_checker']
